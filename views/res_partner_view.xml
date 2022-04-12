@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--    credit limit checker form view-->
+    <record id="res_partner_form_view_inherit_credit_limit" model="ir.ui.view">
+        <field name="name">res.partner.form.view.inherit.credit.limit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[1]/page[@name='sales_purchases']/group[@name='container_row_2']/group[@name='sale']"
+                   position="after">
+                <group string="Credit Limit" name="credit_limit" priority="2">
+                    <field name="credit_limit_available"/>
+                    <field name="credit_limit" attrs="{'invisible': [('credit_limit_available', '=', False)]}"/>
+                    <field name="available_credit_limit" attrs="{'invisible': [('credit_limit_available', '=', False)]}"/>
+                    <field name="res_currency" invisible="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
